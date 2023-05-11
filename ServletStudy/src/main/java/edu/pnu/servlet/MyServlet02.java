@@ -11,6 +11,11 @@ import javax.servlet.http.HttpServletResponse;
 
 @WebServlet("/myservlet02")
 public class MyServlet02 extends HttpServlet {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	@Override
 	//http로 된 파라미터들은 톰캣에서 제공해주는 것들!!!!
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
