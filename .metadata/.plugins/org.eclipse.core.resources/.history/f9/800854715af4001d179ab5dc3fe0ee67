@@ -1,0 +1,20 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<%
+String sel = request.getParameter("gugudanType1");
+String vol = request.getParameter("vol");
+int svol = Integer.parseInt(vol);
+
+%>
+
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+
+</body>
+</html>

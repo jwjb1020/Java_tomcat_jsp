@@ -1,0 +1,37 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<% 
+
+String type = request.getParameter("type");
+String snum = request.getParameter("num");
+
+if(type == null)
+{type = "list";}
+else {if(!type.equals("table")) type = "list";}
+int num =2;
+if(snum != null) num = Integer.parseInt(snum);
+if(num==0) num = 2;
+%>
+<head>
+<meta charset="UTF-8">
+<title>gugudan</title>
+</head>
+<body>
+<h1>구구단 타입<h1>
+<% if(type.equals("table")){ %>
+<table border = "1" style = "width:200px; text-align:center;">
+	<tr><td><%=num %>단입니다.</tr></td>
+	<%for(int i =1; i<=9; i++){ %>
+		<tr><td><%=num %>*<%=i %>=<%=num*i %></td></tr>
+	<%} %>
+	</table>
+	<%} else { %>
+
+
+</table>
+
+
+</body>
+</html>
