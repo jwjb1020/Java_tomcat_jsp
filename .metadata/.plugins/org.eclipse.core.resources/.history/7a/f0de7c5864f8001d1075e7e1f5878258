@@ -1,0 +1,35 @@
+<%@ page import="java.sql.PreparedStatement" %>
+<%@ page import="java.sql.Connection" %>
+<%@ page import="common.JDBCConnect1" %>
+
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>JDBC</title>
+</head>
+<body>
+<h2>회원추가 테스트(executeUPdate사용)</h2>
+<%
+//db연결
+JDBCConnect1 jdbc = new JDBCConnect1();
+
+String id = "test1";
+String pass = "1111";
+String name = "테스트 회원1";
+
+String sql = "insert into member (id,pw,name) values (?,?,?)";
+PreparedStatement psmt = jdbc.getConnection();
+psmt.setString(1, id);
+psmt.setString(2, pass);
+psmt.setString(3, name);
+
+int inResult = psmt.executeUpdate();
+out.println(inResult + "행이 입력됨");
+
+jdbc.closeConnection(psmt);
+%>
+</body>
+</html>
