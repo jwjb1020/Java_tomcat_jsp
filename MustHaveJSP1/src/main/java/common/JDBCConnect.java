@@ -6,6 +6,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
+import javax.servlet.ServletContext;
+
 public class JDBCConnect {
 	public Connection con;
 	public Statement stmt;
@@ -29,6 +31,40 @@ public class JDBCConnect {
 		}
 
 	}
+	// 두 번째 생성자
+    public JDBCConnect(String driver, String url, String id, String pwd) {
+        try {
+            // JDBC 드라이버 로드
+            Class.forName(driver);  
+
+            // DB에 연결
+            con = DriverManager.getConnection(url, id, pwd);
+
+            System.out.println("DB 연결 성공(인수 생성자 1)");
+        }
+        catch (Exception e) {            
+            e.printStackTrace();
+        }
+    }
+ // 세 번째 생성자
+    public JDBCConnect(ServletContext app) {
+        try {
+            // JDBC 드라이버 로드
+            String driver = app.getInitParameter("MySQLDriver"); 
+            Class.forName(driver); 
+
+            // DB에 연결
+            String url = app.getInitParameter("MySQLURL"); 
+            String id = app.getInitParameter("MySQLId");
+            String pwd = app.getInitParameter("MySQLPwd");
+            con = DriverManager.getConnection(url, id, pwd);
+
+            System.out.println("DB 연결 성공(인수 생성자 2)"); 
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
 	public void close() {
 		try {
