@@ -7,8 +7,8 @@ import javax.servlet.ServletContext;
 import common.JDBCConnect;
 
 public class BoardDAO extends JDBCConnect {
-    public BoardDAO(ServletContext app) {
-        super(app);
+    public BoardDAO(ServletContext application) {
+        super(application);
     }
 
     // 검색 조건에 맞는 게시물의 개수를 반환합니다.
@@ -132,9 +132,9 @@ public class BoardDAO extends JDBCConnect {
         try {
             // INSERT 쿼리문 작성 
             String query = "INSERT INTO board ( "
-                         + " num,title,content,id,visitcount) "
+                         + " title,content,id,visitcount) "
                          + " VALUES ( "
-                         + " seq_board_num.NEXTVAL, ?, ?, ?, 0)";  
+                         + " ?, ?, ?, 0)";  
 
             psmt = con.prepareStatement(query);  // 동적 쿼리 
             psmt.setString(1, dto.getTitle());  
@@ -196,7 +196,7 @@ public class BoardDAO extends JDBCConnect {
         try {
             psmt = con.prepareStatement(query);
             psmt.setString(1, num);  // 인파라미터를 일련번호로 설정 
-            psmt.executeQuery();     // 쿼리 실행 
+            psmt.executeUpdate();     // 쿼리 실행 
         } 
         catch (Exception e) {
             System.out.println("게시물 조회수 증가 중 예외 발생");

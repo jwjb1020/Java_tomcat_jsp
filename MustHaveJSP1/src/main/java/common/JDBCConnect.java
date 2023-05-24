@@ -47,16 +47,16 @@ public class JDBCConnect {
         }
     }
  // 세 번째 생성자
-    public JDBCConnect(ServletContext app) {
+    public JDBCConnect(ServletContext application) {
         try {
             // JDBC 드라이버 로드
-            String driver = app.getInitParameter("MySQLDriver"); 
+            String driver = application.getInitParameter("MySQLDriver"); 
             Class.forName(driver); 
 
             // DB에 연결
-            String url = app.getInitParameter("MySQLURL"); 
-            String id = app.getInitParameter("MySQLId");
-            String pwd = app.getInitParameter("MySQLPwd");
+            String url = application.getInitParameter("MySQLURL"); 
+            String id = application.getInitParameter("MySQLId");
+            String pwd = application.getInitParameter("MySQLPwd");
             con = DriverManager.getConnection(url, id, pwd);
 
             System.out.println("DB 연결 성공(인수 생성자 2)"); 
