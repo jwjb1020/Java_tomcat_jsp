@@ -1,6 +1,13 @@
 package membership;
 
-public class MemberDTO {
+import java.io.Serializable;
+
+public class MemberDTO implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	private String id;
 	private String pass;
 	private String name;
@@ -11,10 +18,10 @@ public class MemberDTO {
 	}
 
 	public MemberDTO(String id, String pass, String name, String regidate) {
-		this.id =id;
+		this.id = id;
 		this.pass = pass;
-		this.name =name;
-		this.regidate =regidate;
+		this.name = name;
+		this.regidate = regidate;
 	}
 
 	public String getId() {
